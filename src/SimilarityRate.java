@@ -26,7 +26,6 @@ public class SimilarityRate {
     public static HashMap<String, Integer> averageWord(HashMap<String, Integer>[] words) {
         Set<String> keys = words[0].keySet();
         HashMap<String, Integer> averageWordCount = new HashMap<>();
-        int m = words[0].size();
         int n = words.length;
         for (String key: keys) {
             int sum = 0;
@@ -38,7 +37,13 @@ public class SimilarityRate {
         return averageWordCount;
     }
 
-
-
+    public static double similarRatioOther(HashMap<String, Integer> average, HashMap<String, Integer> other) {
+        Set<String> keys = average.keySet();
+        int sum = 0;
+        for (String key : keys) {
+            sum += Math.pow(average.get(key) - other.get(key), 2);
+        }
+        return 1 / keys.size() * Math.sqrt(sum);
+    }
 
 }
