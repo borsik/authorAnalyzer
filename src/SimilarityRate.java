@@ -7,21 +7,38 @@ import java.util.Set;
 public class SimilarityRate {
     HashMap<String, Integer>[] ubiquityWords;
 
-    public static double similarityRate(HashMap<String, Integer>[] ubiquityWords) {
-        Set<String> uniqueKeys = ubiquityWords[0].keySet();
+    public static double similarRatio(HashMap<String, Integer>[] words) {
+        Set<String> keys = words[0].keySet();
         int diff = 0;
-        double g;
-        int n = ubiquityWords.length;
-        int m = ubiquityWords[0].size();
-        for (String uniqueKey : uniqueKeys) {
+        int n = words.length;
+        int m = words[0].size();
+        for (String key : keys) {
             for (int i = 0; i < n - 1; i++) {
                 for (int k = i + 1; k < n; k++) {
-                    diff = ubiquityWords[i].get(uniqueKey) - ubiquityWords[k].get(uniqueKey);
+                    diff += words[i].get(key) - words[k].get(key);
                 }
             }
 
         }
-        g = 2 / (n * m * (n - 1)) * Math.sqrt(diff * diff);
-        return g;
+        return 2 / (n * m * (n - 1)) * Math.sqrt(diff * diff);
     }
+
+    public static HashMap<String, Integer> averageWord(HashMap<String, Integer>[] words) {
+        Set<String> keys = words[0].keySet();
+        HashMap<String, Integer> averageWordCount = new HashMap<>();
+        int m = words[0].size();
+        int n = words.length;
+        for (String key: keys) {
+            int sum = 0;
+            for (int i = 0; i < n; i++) {
+                sum += words[i].get(key);
+            }
+            averageWordCount.put(key, sum / n);
+        }
+        return averageWordCount;
+    }
+
+
+
+
 }
