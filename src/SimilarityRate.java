@@ -15,12 +15,12 @@ public class SimilarityRate {
         for (String key : keys) {
             for (int i = 0; i < n - 1; i++) {
                 for (int k = i + 1; k < n; k++) {
-                    diff += words[i].get(key) - words[k].get(key);
+                    diff += (words[i].get(key) - words[k].get(key))*(words[i].get(key) - words[k].get(key));
                 }
             }
 
         }
-        return 2 / (n * m * (n - 1)) * Math.sqrt(diff * diff);
+        return Math.sqrt((double)2 / (double)(n * m * (n - 1)) * (diff));
     }
 
     public static HashMap<String, Integer> averageWord(HashMap<String, Integer>[] words) {
@@ -43,7 +43,7 @@ public class SimilarityRate {
         for (String key : keys) {
             sum += Math.pow(average.get(key) - other.get(key), 2);
         }
-        return 1 / keys.size() * Math.sqrt(sum);
+        return Math.sqrt((double)1 / (double)keys.size() * (sum));
     }
 
 }
