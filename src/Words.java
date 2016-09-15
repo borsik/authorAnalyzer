@@ -78,7 +78,7 @@ public class Words {
         return h;
     }
 
-    public static void showDistibution(HashMap<String,Integer> h){
+    public static void showDistribution(HashMap<String,Integer> h){
         int overall=0;
         for(Map.Entry<String,Integer> entry :h.entrySet()){
             overall+=entry.getValue();
@@ -98,6 +98,6 @@ public class Words {
             input = input + sc.nextLine()+" ";
         }
         words = getWords(words,input);
-        showDistibution(words);
+        showDistribution(words);
     }
 }
