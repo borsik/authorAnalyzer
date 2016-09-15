@@ -94,7 +94,7 @@ public class Words {
             input = input + sc.nextLine()+" ";
         }
         words = getWords(words,input);
-        //showDistibution(words);
+        //showDistribution(words);
         return words;
     }
 
@@ -241,7 +241,7 @@ public class Words {
         showHashmaps(originalParts = intersectChapters(analyseTenChapters("dostoevsky")));
         HashMap<String,Integer> original = SimilarityRate.averageWord(originalParts);
         Double g = SimilarityRate.similarRatio(originalParts);
-        showDistibution(original);
+        showDistribution(original);
         System.out.println(g);
         extractPart("dostoevskyPart");
         HashMap<String,Integer> newPart = prepareToComparison(analiseText("dostoevskyPart_"),original);
